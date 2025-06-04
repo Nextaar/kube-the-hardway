@@ -1,0 +1,2 @@
+
+**Note: Please run the " head -c 32 /dev/urandom | base64 " to store the secret in place of $(....) >> encryption-config.yaml

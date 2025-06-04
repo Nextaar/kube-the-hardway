@@ -1,0 +1,27 @@
+RUN E2E Test
+
+
+#Install Go lang
+wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
+
+sudo tar -C /usr/local -xzf go1.12.1.linux-amd64.tar.gz
+export GOPATH="/home/vagrant/go"
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+#Install Go test 
+go get -v -u k8s.io/test-infra/kubetest
+
+
+
+#Extract the Version
+
+kubetest --extract=v1.13.0
+
+cd kubernetes
+
+export KUBE_MASTER_IP="($IP):6443"
+
+export KUBE_MASTER=master-1
+
+kubetest --test --provider=skeleton --test_args="--ginkgo.focus=\[Conformance\]" | tee test.out
+
