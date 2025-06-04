@@ -1,4 +1,4 @@
-kubectl apply -f 
+kubectl apply -f https://github.com/Nextaar/kube-the-hardway/blob/master/08-manifests/coredns.yaml
 
 
 
